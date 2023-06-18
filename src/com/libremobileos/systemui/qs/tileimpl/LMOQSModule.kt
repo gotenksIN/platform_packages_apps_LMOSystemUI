@@ -21,11 +21,13 @@ import com.android.systemui.qs.tileimpl.QSTileImpl
 import com.libremobileos.systemui.qs.tiles.AmbientDisplayTile
 import com.libremobileos.systemui.qs.tiles.AODTile
 import com.libremobileos.systemui.qs.tiles.CaffeineTile
+import com.libremobileos.systemui.qs.tiles.CellularTile
 import com.libremobileos.systemui.qs.tiles.HeadsUpTile
 import com.libremobileos.systemui.qs.tiles.PowerShareTile
 import com.libremobileos.systemui.qs.tiles.ReadingModeTile
 import com.libremobileos.systemui.qs.tiles.SyncTile
 import com.libremobileos.systemui.qs.tiles.UsbTetherTile
+import com.libremobileos.systemui.qs.tiles.WifiTile
 
 import dagger.Binds
 import dagger.Module
@@ -51,6 +53,12 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(CaffeineTile.TILE_SPEC)
     fun bindCaffeineTile(caffeineTile: CaffeineTile): QSTileImpl<*>
+
+    /** Inject CellularTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(CellularTile.TILE_SPEC)
+    fun bindCellularTile(cellularTile: CellularTile): QSTileImpl<*>
 
     /** Inject HeadsUpTile into tileMap in QSModule */
     @Binds
@@ -81,5 +89,11 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(UsbTetherTile.TILE_SPEC)
     fun bindUsbTetherTile(usbTetherTile: UsbTetherTile): QSTileImpl<*>
+
+    /** Inject WifiTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(WifiTile.TILE_SPEC)
+    fun bindWifiTile(wifiTile: WifiTile): QSTileImpl<*>
 
 }

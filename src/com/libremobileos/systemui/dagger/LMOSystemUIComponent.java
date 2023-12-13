@@ -14,49 +14,42 @@
  * limitations under the License.
  */
 
-package com.android.systemui.go;
+package com.libremobileos.systemui.dagger;
 
-import com.android.systemui.dagger.DefaultActivityBinder;
-import com.android.systemui.dagger.DefaultBroadcastReceiverBinder;
-import com.android.systemui.dagger.DefaultServiceBinder;
+import com.android.systemui.dagger.DefaultComponentBinder;
 import com.android.systemui.dagger.DependencyProvider;
 import com.android.systemui.dagger.SysUIComponent;
 import com.android.systemui.dagger.SysUISingleton;
+import com.android.systemui.dagger.SystemUIBinder;
+import com.android.systemui.dagger.SystemUICoreStartableModule;
 import com.android.systemui.dagger.SystemUIModule;
-import com.android.systemui.keyguard.dagger.KeyguardModule;
 import com.android.systemui.keyguard.CustomizationProvider;
-import com.android.systemui.recents.RecentsModule;
-import com.android.systemui.statusbar.dagger.CentralSurfacesModule;
 import com.android.systemui.statusbar.NotificationInsetsModule;
 import com.android.systemui.statusbar.QsFrameTranslateModule;
 
 import dagger.Subcomponent;
 
 /**
- * Dagger Subcomponent for Core System UI on Android Go.
+ * Dagger Subcomponent for Core SysUI used in AOSP.
  */
 @SysUISingleton
 @Subcomponent(modules = {
+        DefaultComponentBinder.class,
         DependencyProvider.class,
-        SystemUIModule.class,
-        DefaultActivityBinder.class,
-        DefaultBroadcastReceiverBinder.class,
-        DefaultServiceBinder.class,
-        SystemUIGoCoreStartableModule.class,
-        KeyguardModule.class,
-        RecentsModule.class,
-        CentralSurfacesModule.class,
         NotificationInsetsModule.class,
         QsFrameTranslateModule.class,
-        SystemUIGoModule.class})
-public interface SystemUIGoComponent extends SysUIComponent {
+        SystemUIBinder.class,
+        SystemUIModule.class,
+        SystemUICoreStartableModule.class,
+        LMOSystemUIModule.class})
+public interface LMOSystemUIComponent extends SysUIComponent {
 
     /**
      * Builder for a SysUIComponent.
      */
     @Subcomponent.Builder
     interface Builder extends SysUIComponent.Builder {
-        SystemUIGoComponent build();
+        LMOSystemUIComponent build();
     }
 
     /**

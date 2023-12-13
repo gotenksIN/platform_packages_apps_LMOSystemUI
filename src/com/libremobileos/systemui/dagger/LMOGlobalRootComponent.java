@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.go;
+package com.libremobileos.systemui.dagger;
 
 import com.android.systemui.dagger.GlobalModule;
 import com.android.systemui.dagger.GlobalRootComponent;
@@ -24,22 +24,20 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * Root component for Dagger injection on System UI for Android Go.
+ * Root component for Dagger injection used in AOSP.
  */
 @Singleton
-@Component(modules = {
-        GlobalModule.class
-})
-public interface SystemUIGoGlobalRootComponent extends GlobalRootComponent {
-    /** Builder for a SystemUIGoGlobalRootComponent. */
-    @Component.Builder
-    interface Builder extends GlobalRootComponent.Builder {
-        SystemUIGoGlobalRootComponent build();
-    }
+@Component(modules = {GlobalModule.class})
+public interface LMOGlobalRootComponent extends GlobalRootComponent {
 
     /**
-     * Builder method for the Android Go System UI subcomponent.
+     * Builder for a LMOSystemUIGlobalRootComponent.
      */
+    @Component.Builder
+    interface Builder extends GlobalRootComponent.Builder {
+        LMOGlobalRootComponent build();
+    }
+
     @Override
-    SystemUIGoComponent.Builder getSysUIComponent();
+    LMOSystemUIComponent.Builder getSysUIComponent();
 }

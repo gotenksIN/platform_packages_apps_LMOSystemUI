@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-package com.android.systemui.go;
+package com.libremobileos.systemui;
 
 import android.content.Context;
 
-import com.android.systemui.SystemUIAppComponentFactoryBase;
 import com.android.systemui.SystemUIInitializer;
+import com.android.systemui.dagger.GlobalRootComponent;
 
-/**
- * Starts up SystemUI using {@link SystemUIGoInitializer}.
- *
- * The {@link SystemUIAppComponentFactoryBase} is required for proper SystemUI functionality.
- *
- * @see SystemUIAppComponentFactoryBase
- */
-public class SystemUIGoAppComponentFactory extends SystemUIAppComponentFactoryBase {
+import com.libremobileos.systemui.dagger.DaggerLMOGlobalRootComponent;
+
+public class LMOSystemUIInitializer extends SystemUIInitializer {
+    public LMOSystemUIInitializer(Context context) {
+        super(context);
+    }
+
     @Override
-    protected SystemUIInitializer createSystemUIInitializer(Context context) {
-        return new SystemUIGoInitializer(context);
+    protected GlobalRootComponent.Builder getGlobalRootComponentBuilder() {
+        return DaggerLMOGlobalRootComponent.builder();
     }
 }

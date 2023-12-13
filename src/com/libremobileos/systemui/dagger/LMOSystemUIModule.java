@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.go;
+package com.libremobileos.systemui.dagger;
 
 import static com.android.systemui.Dependency.ALLOW_NOTIFICATION_LONG_PRESS_NAME;
 import static com.android.systemui.Dependency.LEAK_REPORT_EMAIL_NAME;
@@ -25,8 +25,7 @@ import android.os.Handler;
 
 import com.android.internal.logging.UiEventLogger;
 import com.android.keyguard.KeyguardViewController;
-import com.android.systemui.dagger.GlobalRootComponent;
-import com.android.systemui.dagger.ReferenceSystemUIModule;
+import com.android.systemui.battery.BatterySaverModule;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.dock.DockManager;
@@ -41,8 +40,8 @@ import com.android.systemui.qs.dagger.QSModule;
 import com.android.systemui.qs.tileimpl.QSFactoryImpl;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.recents.RecentsImplementation;
+import com.android.systemui.rotationlock.RotationLockModule;
 import com.android.systemui.screenshot.ReferenceScreenshotModule;
-import com.android.systemui.settings.dagger.MultiUserUtilsModule;
 import com.android.systemui.shade.NotificationShadeWindowControllerImpl;
 import com.android.systemui.shade.ShadeController;
 import com.android.systemui.shade.ShadeControllerImpl;
@@ -79,32 +78,28 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * A dagger module for overriding the default implementations of injected System UI components on
- * Android Go. This is forked from {@link ReferenceSystemUIModule}
+ * Fork of {@link ReferenceSystemUIModule}
  */
 @Module(includes = {
         AospPolicyModule.class,
+        BatterySaverModule.class,
         GestureModule.class,
         MediaModule.class,
-        MultiUserUtilsModule.class,
         PowerModule.class,
         QSModule.class,
         ReferenceScreenshotModule.class,
-        StartCentralSurfacesModule.class,
+        RotationLockModule.class,
         StatusBarEventsModule.class,
+        StartCentralSurfacesModule.class,
         VolumeModule.class
 })
-public abstract class SystemUIGoModule {
-
-    @Binds
-    abstract GlobalRootComponent bindGlobalRootComponent(
-            SystemUIGoGlobalRootComponent globalRootComponent);
+public abstract class LMOSystemUIModule {
 
     @SysUISingleton
     @Provides
     @Named(LEAK_REPORT_EMAIL_NAME)
     static String provideLeakReportEmail() {
-        return "buganizer-system+700073@google.com";
+        return "";
     }
 
     @Binds
@@ -124,12 +119,13 @@ public abstract class SystemUIGoModule {
     @SysUISingleton
     static IndividualSensorPrivacyController provideIndividualSensorPrivacyController(
             SensorPrivacyManager sensorPrivacyManager) {
-        IndividualSensorPrivacyController ispC = new IndividualSensorPrivacyControllerImpl(
+        IndividualSensorPrivacyController spC = new IndividualSensorPrivacyControllerImpl(
                 sensorPrivacyManager);
-        ispC.init();
-        return ispC;
+        spC.init();
+        return spC;
     }
 
+    /** */
     @Binds
     @SysUISingleton
     public abstract QSFactory bindQSFactory(QSFactoryImpl qsFactoryImpl);

@@ -19,8 +19,9 @@ package {
 }
 
 android_library {
-    name: "SystemUIGo-core",
+    name: "LMOSystemUI-core",
     srcs: [
+        "src/**/*.kt",
         "src/**/*.java",
     ],
     resource_dirs: [
@@ -36,13 +37,13 @@ android_library {
 }
 
 android_app {
-    name: "SystemUIGo",
+    name: "LMOSystemUI",
     defaults: [
         "platform_app_defaults",
         "SystemUI_optimized_defaults",
     ],
     static_libs: [
-        "SystemUIGo-core"
+        "LMOSystemUI-core"
     ],
     overrides: [
         "SystemUI",

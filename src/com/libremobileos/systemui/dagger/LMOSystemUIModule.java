@@ -71,6 +71,8 @@ import com.android.systemui.statusbar.policy.SensorPrivacyController;
 import com.android.systemui.statusbar.policy.SensorPrivacyControllerImpl;
 import com.android.systemui.volume.dagger.VolumeModule;
 
+import com.libremobileos.systemui.qs.tileimpl.LMOQSModule;
+
 import javax.inject.Named;
 
 import dagger.Binds;
@@ -91,7 +93,8 @@ import dagger.Provides;
         RotationLockModule.class,
         StatusBarEventsModule.class,
         StartCentralSurfacesModule.class,
-        VolumeModule.class
+        VolumeModule.class,
+        LMOQSModule.class
 })
 public abstract class LMOSystemUIModule {
 

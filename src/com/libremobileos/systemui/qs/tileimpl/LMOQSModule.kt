@@ -20,6 +20,7 @@ import com.android.systemui.qs.tileimpl.QSTileImpl
 
 import com.libremobileos.systemui.qs.tiles.CaffeineTile
 import com.libremobileos.systemui.qs.tiles.HeadsUpTile
+import com.libremobileos.systemui.qs.tiles.SyncTile
 
 import dagger.Binds
 import dagger.Module
@@ -39,5 +40,11 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(HeadsUpTile.TILE_SPEC)
     fun bindHeadsUpTile(headsUpTile: HeadsUpTile): QSTileImpl<*>
+
+    /** Inject SyncTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(SyncTile.TILE_SPEC)
+    fun bindSyncTile(syncTile: SyncTile): QSTileImpl<*>
 
 }

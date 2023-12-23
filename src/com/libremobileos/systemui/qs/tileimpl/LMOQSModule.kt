@@ -18,6 +18,7 @@ package com.libremobileos.systemui.qs.tileimpl;
 
 import com.android.systemui.qs.tileimpl.QSTileImpl
 
+import com.libremobileos.systemui.qs.tiles.AmbientDisplayTile
 import com.libremobileos.systemui.qs.tiles.CaffeineTile
 import com.libremobileos.systemui.qs.tiles.HeadsUpTile
 import com.libremobileos.systemui.qs.tiles.SyncTile
@@ -29,6 +30,12 @@ import dagger.multibindings.StringKey
 
 @Module
 interface LMOQSModule {
+    /** Inject AmbientDisplayTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(AmbientDisplayTile.TILE_SPEC)
+    fun bindAmbientDisplayTile(ambientDisplayTile: AmbientDisplayTile): QSTileImpl<*>
+
     /** Inject CaffeineTile into tileMap in QSModule */
     @Binds
     @IntoMap

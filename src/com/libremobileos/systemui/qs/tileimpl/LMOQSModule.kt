@@ -22,6 +22,7 @@ import com.libremobileos.systemui.qs.tiles.AmbientDisplayTile
 import com.libremobileos.systemui.qs.tiles.AODTile
 import com.libremobileos.systemui.qs.tiles.CaffeineTile
 import com.libremobileos.systemui.qs.tiles.CellularTile
+import com.libremobileos.systemui.qs.tiles.DataSwitchTile
 import com.libremobileos.systemui.qs.tiles.HeadsUpTile
 import com.libremobileos.systemui.qs.tiles.PowerShareTile
 import com.libremobileos.systemui.qs.tiles.ReadingModeTile
@@ -59,6 +60,12 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(CellularTile.TILE_SPEC)
     fun bindCellularTile(cellularTile: CellularTile): QSTileImpl<*>
+
+    /** Inject DataSwitchTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(DataSwitchTile.TILE_SPEC)
+    fun bindDataSwitchTile(dataSwitchTile: DataSwitchTile): QSTileImpl<*>
 
     /** Inject HeadsUpTile into tileMap in QSModule */
     @Binds

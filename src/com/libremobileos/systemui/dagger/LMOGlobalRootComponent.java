@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,21 +24,22 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * Root component for Dagger injection on System UI for LMO.
+ * Root component for Dagger injection used in LibreMobileOS.
  */
 @Singleton
-@Component(modules = {
-        GlobalModule.class
-})
+@Component(modules = {GlobalModule.class})
 public interface LMOGlobalRootComponent extends GlobalRootComponent {
-    /** Builder for a LMOGlobalRootComponent. */
+
+    /**
+     * Builder for a LMOGlobalRootComponent.
+     */
     @Component.Builder
     interface Builder extends GlobalRootComponent.Builder {
         LMOGlobalRootComponent build();
     }
 
     /**
-     * Builder method for the LMO System UI subcomponent.
+     * Builder for a {@link LMOSysUIComponent}, which makes it a subcomponent of this class.
      */
     @Override
     LMOSystemUIComponent.Builder getSysUIComponent();

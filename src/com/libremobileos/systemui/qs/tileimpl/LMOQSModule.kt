@@ -27,6 +27,7 @@ import com.libremobileos.systemui.qs.tiles.PowerShareTile
 import com.libremobileos.systemui.qs.tiles.ReadingModeTile
 import com.libremobileos.systemui.qs.tiles.SyncTile
 import com.libremobileos.systemui.qs.tiles.UsbTetherTile
+import com.libremobileos.systemui.qs.tiles.VpnTile
 import com.libremobileos.systemui.qs.tiles.WifiTile
 
 import dagger.Binds
@@ -89,6 +90,12 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(UsbTetherTile.TILE_SPEC)
     fun bindUsbTetherTile(usbTetherTile: UsbTetherTile): QSTileImpl<*>
+
+    /** Inject VpnTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(VpnTile.TILE_SPEC)
+    fun bindVpnTile(vpnTile: VpnTile): QSTileImpl<*>
 
     /** Inject WifiTile into tileMap in QSModule */
     @Binds

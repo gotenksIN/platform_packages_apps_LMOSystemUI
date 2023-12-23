@@ -28,7 +28,11 @@ import com.libremobileos.systemui.qs.tiles.PowerShareTile
 import com.libremobileos.systemui.qs.tiles.ReadingModeTile
 import com.libremobileos.systemui.qs.tiles.SyncTile
 import com.libremobileos.systemui.qs.tiles.UsbTetherTile
+<<<<<<< HEAD
 import com.libremobileos.systemui.qs.tiles.VpnTile
+=======
+import com.libremobileos.systemui.qs.tiles.VPNTetheringTile
+>>>>>>> 603f086 (LMOSystemUI: Add VPNTethering tile)
 import com.libremobileos.systemui.qs.tiles.WifiTile
 
 import dagger.Binds
@@ -103,6 +107,12 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(VpnTile.TILE_SPEC)
     fun bindVpnTile(vpnTile: VpnTile): QSTileImpl<*>
+    
+    /** Inject VPNTetheringTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(VPNTetheringTile.TILE_SPEC)
+    fun bindVPNTetheringTile(vpnTetheringTile: VPNTetheringTile): QSTileImpl<*>
 
     /** Inject WifiTile into tileMap in QSModule */
     @Binds

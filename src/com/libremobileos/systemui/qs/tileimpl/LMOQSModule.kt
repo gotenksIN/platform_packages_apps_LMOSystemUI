@@ -22,6 +22,7 @@ import com.libremobileos.systemui.qs.tiles.AmbientDisplayTile
 import com.libremobileos.systemui.qs.tiles.CaffeineTile
 import com.libremobileos.systemui.qs.tiles.HeadsUpTile
 import com.libremobileos.systemui.qs.tiles.SyncTile
+import com.libremobileos.systemui.qs.tiles.UsbTetherTile
 
 import dagger.Binds
 import dagger.Module
@@ -53,5 +54,11 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(SyncTile.TILE_SPEC)
     fun bindSyncTile(syncTile: SyncTile): QSTileImpl<*>
+
+    /** Inject UsbTetherTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(UsbTetherTile.TILE_SPEC)
+    fun bindUsbTetherTile(usbTetherTile: UsbTetherTile): QSTileImpl<*>
 
 }

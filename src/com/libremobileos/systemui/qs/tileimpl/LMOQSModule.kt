@@ -23,6 +23,7 @@ import com.libremobileos.systemui.qs.tiles.AODTile
 import com.libremobileos.systemui.qs.tiles.CaffeineTile
 import com.libremobileos.systemui.qs.tiles.HeadsUpTile
 import com.libremobileos.systemui.qs.tiles.PowerShareTile
+import com.libremobileos.systemui.qs.tiles.ReadingModeTile
 import com.libremobileos.systemui.qs.tiles.SyncTile
 import com.libremobileos.systemui.qs.tiles.UsbTetherTile
 
@@ -62,6 +63,12 @@ interface LMOQSModule {
     @IntoMap
     @StringKey(PowerShareTile.TILE_SPEC)
     fun bindPowerShareTile(powerShareTile: PowerShareTile): QSTileImpl<*>
+
+    /** Inject ReadingModeTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(ReadingModeTile.TILE_SPEC)
+    fun bindReadingModeTile(readingModeTile: ReadingModeTile): QSTileImpl<*>
 
     /** Inject SyncTile into tileMap in QSModule */
     @Binds

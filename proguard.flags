@@ -2,3 +2,8 @@
 
 # Proguard rules not owned by core SystemUI
 -keep class com.libremobileos.systemui.** { *; }
+
+-keep,allowoptimization,allowaccessmodification class com.libremobileos.systemui.DaggerLMOGlobalRootComponent** { !synthetic *; }
+
+# TODO(b/284411203) delete this
+-keep,allowoptimization,allowaccessmodification class com.android.systemui.dagger.DaggerReferenceGlobalRootComponent** { !synthetic *; }
